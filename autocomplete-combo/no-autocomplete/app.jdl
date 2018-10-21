@@ -8,7 +8,7 @@ application {
         clientFramework angularX
         clientPackageManager npm
         databaseType sql
-        devDatabaseType postgresql
+        devDatabaseType h2Memory
         prodDatabaseType postgresql
         jhiPrefix noa
         languages [en, fr]
@@ -23,9 +23,7 @@ application {
 entity Contact (no_contact) {
     firstName String required,
     lastName String required,
-    email String required,
-    phoneArea String,
-    phoneNumber String
+    email String
 }
 
 
