@@ -2,34 +2,32 @@ application {
     config {
         applicationType monolith
         authenticationType jwt
-        baseName noautocomplete
+        baseName autocompletedto
         buildTool maven
         cacheProvider ehcache
         clientFramework angularX
         clientPackageManager npm
         databaseType sql
-        devDatabaseType postgresql
+        devDatabaseType h2Memory
         prodDatabaseType postgresql
-        jhiPrefix noa
+        jhiPrefix aud
         languages [en, fr]
         nativeLanguage en
-        packageName org.combo.noautocomplete
+        packageName org.combo.autocompletedto
     }
 
     entities *
 }
 
 
-entity Contact (no_contact) {
+entity Contact (aud_contact) {
     firstName String required,
     lastName String required,
-    email String required,
-    phoneArea String,
-    phoneNumber String
+    email String required
 }
 
 
-entity Language (no_language) {
+entity Language (aud_language) {
     alpha3b String required maxlength(3),
     alpha2 String required maxlength(2)
     name String required,
