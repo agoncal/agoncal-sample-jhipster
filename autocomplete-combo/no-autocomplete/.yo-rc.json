@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "clientPackageManager": "npm",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "noa",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "org.combo.noautocomplete",
+    "packageFolder": "org/combo/noautocomplete",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "serviceDiscoveryType": false,
+    "skipClient": false,
+    "skipServer": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "noautocomplete",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angularX",
+    "jhipsterVersion": "5.5.0",
+    "skipUserManagement": false,
+    "serverPort": "8080",
+    "useSass": true,
+    "jwtSecretKey": "MzQwZWEyZGQ0OWJkYWIwZjI0MGQzZTZlYTc0MWY2MTAwZDM5MjkyYTA3ZjAxYzRkYjQ4ZjQ1ZDExY2MzZjcyNzFiMjUzNjg0ZTA2ZGQ3Njc0YzExODZmMTQ2YmU3ZTdlNDZmMDE1NzYyMDJkYTM0MmNmNTExYTQ0M2QwNTgwY2Y="
+  },
+  "entities": [
+    "Contact",
+    "Language"
+  ]
+}

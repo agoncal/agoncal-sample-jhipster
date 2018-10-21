@@ -1,0 +1,11 @@
+version: '2'
+services:
+    autocompleteentity-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/autocompleteentity/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=autocompleteentity
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
