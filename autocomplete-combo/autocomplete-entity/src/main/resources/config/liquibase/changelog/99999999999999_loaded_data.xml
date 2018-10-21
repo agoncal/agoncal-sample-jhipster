@@ -13,7 +13,7 @@
     <changeSet id="99999999999999-load" author="agoncal" context="!test">
         <loadData encoding="UTF-8" separator=";"
                   file="config/liquibase/data/languages.csv"
-                  tableName="no_language">
+                  tableName="aue_language">
         </loadData>
     </changeSet>
 
