@@ -23,7 +23,7 @@ application {
 entity Contact (aue_contact) {
     firstName String required,
     lastName String required,
-    email String 
+    email String
 }
 
 
