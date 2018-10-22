@@ -8,6 +8,7 @@
     "node_modules"
   ],
   "dependencies": {
+    "@angular/animations": "^7.0.0",
     "@angular/common": "6.1.0",
     "@angular/compiler": "6.1.0",
     "@angular/core": "6.1.0",
@@ -26,6 +27,8 @@
     "ngx-cookie": "2.0.1",
     "ngx-infinite-scroll": "6.0.1",
     "ngx-webstorage": "2.0.1",
+    "primeicons": "^1.0.0",
+    "primeng": "^6.1.5",
     "reflect-metadata": "0.1.12",
     "rxjs": "6.1.0",
     "swagger-ui": "2.2.10",

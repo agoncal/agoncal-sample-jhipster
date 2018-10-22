@@ -20,6 +20,7 @@ import { AutocompletedtoEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { AudMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { AudMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         AutocompletedtoHomeModule,
         AutocompletedtoAccountModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
-        AutocompletedtoEntityModule
+        AutocompletedtoEntityModule,
+        BrowserAnimationsModule
     ],
     declarations: [AudMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
     providers: [

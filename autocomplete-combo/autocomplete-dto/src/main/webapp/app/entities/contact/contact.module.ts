@@ -11,11 +11,16 @@ import {
     contactRoute,
     contactPopupRoute
 } from './';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 const ENTITY_STATES = [...contactRoute, ...contactPopupRoute];
 
 @NgModule({
-    imports: [AutocompletedtoSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [
+    AutocompletedtoSharedModule,
+    AutoCompleteModule,
+    RouterModule.forChild(ENTITY_STATES)
+    ],
     declarations: [
         ContactComponent,
         ContactDetailComponent,
