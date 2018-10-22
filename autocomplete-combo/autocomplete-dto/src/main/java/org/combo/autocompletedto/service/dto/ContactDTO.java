@@ -99,8 +99,8 @@ public class ContactDTO implements Serializable {
             ", firstName='" + getFirstName() + "'" +
             ", lastName='" + getLastName() + "'" +
             ", email='" + getEmail() + "'" +
-            ", language=" + getLanguageId() +
-            ", language='" + getLanguageName() + "'" +
+            ", languageId=" + getLanguageId() +
+            ", languageName='" + getLanguageName() + "'" +
             "}";
     }
 }
