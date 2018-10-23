@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <p-autoComplete id="field_language" name="language"
                                         [(ngModel)]="contact.language" field="name"
-                                        [suggestions]="languages"
+                                        [suggestions]="suggestedLanguages"
                                         (completeMethod)="searchLanguages($event)"
                                         required>
                         </p-autoComplete>

@@ -17,7 +17,7 @@ export class ContactUpdateComponent implements OnInit {
     contact: IContact;
     isSaving: boolean;
 
-    languages: ILanguage[];
+    suggestedLanguages: ILanguage[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -36,7 +36,7 @@ export class ContactUpdateComponent implements OnInit {
     searchLanguages($event) {
         this.languageService.query({'name.contains': $event.query}).subscribe(
             (res: HttpResponse<ILanguage[]>) => {
-                this.languages = res.body;
+                this.suggestedLanguages = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );

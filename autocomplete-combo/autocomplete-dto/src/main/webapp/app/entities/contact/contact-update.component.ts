@@ -17,8 +17,8 @@ export class ContactUpdateComponent implements OnInit {
     contact: IContact;
     isSaving: boolean;
 
-    languages: ILanguage[];
-    language: ILanguage;
+    suggestedLanguages: ILanguage[];
+    selectedLanguage: ILanguage;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -33,7 +33,9 @@ export class ContactUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({contact}) => {
             this.contact = contact;
             if (contact.languageId) {
-                this.languageService.find(contact.languageId).subscribe((language: HttpResponse<Language>) => this.language = language.body);
+                this.selectedLanguage = new Language();
+                this.selectedLanguage.id = contact.languageId;
+                this.selectedLanguage.name = contact.languageName;
             }
         });
     }
@@ -41,14 +43,14 @@ export class ContactUpdateComponent implements OnInit {
     searchLanguages($event) {
         this.languageService.query({'name.contains': $event.query}).subscribe(
             (res: HttpResponse<ILanguage[]>) => {
-                this.languages = res.body;
+                this.suggestedLanguages = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
 
-    captureLanguageId($event) {
-        this.language = $event;
+    captureSelectedLanguage($event) {
+        this.selectedLanguage = $event;
         this.contact.languageId = $event.id;
         this.contact.languageName = $event.name;
     }
