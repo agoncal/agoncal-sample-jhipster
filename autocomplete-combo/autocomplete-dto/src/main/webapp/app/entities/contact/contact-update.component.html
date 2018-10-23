@@ -42,7 +42,7 @@
                            for="field_language">Language</label>
                     <div class="form-group">
                         <p-autoComplete id="field_language" name="language"
-                                        [(ngModel)]="contact.language" field="name"
+                                        [(ngModel)]="language" field="name"
                                         [suggestions]="languages"
                                         (completeMethod)="searchLanguages($event)"
                                         (onSelect)="captureLanguageId($event)"
