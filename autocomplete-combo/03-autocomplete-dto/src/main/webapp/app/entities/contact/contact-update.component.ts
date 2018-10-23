@@ -30,7 +30,7 @@ export class ContactUpdateComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.activatedRoute.data.subscribe((contact:IContact) => {
+        this.activatedRoute.data.subscribe((contact: IContact) => {
             this.contact = contact;
             if (contact.languageId) {
                 this.selectedLanguage = new Language();
