@@ -1,9 +1,14 @@
 package org.combo.autocompletedtooptim.service;
 
-import java.util.List;
-
-import javax.persistence.criteria.JoinType;
-
+import io.github.jhipster.service.QueryService;
+import org.combo.autocompletedtooptim.domain.Language;
+import org.combo.autocompletedtooptim.domain.Language_;
+import org.combo.autocompletedtooptim.repository.LanguageRepository;
+import org.combo.autocompletedtooptim.service.dto.LanguageCriteria;
+import org.combo.autocompletedtooptim.service.dto.LanguageDTO;
+import org.combo.autocompletedtooptim.service.dto.LanguageIdNameDTO;
+import org.combo.autocompletedtooptim.service.mapper.LanguageIdNameMapper;
+import org.combo.autocompletedtooptim.service.mapper.LanguageMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -12,14 +17,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.github.jhipster.service.QueryService;
-
-import org.combo.autocompletedtooptim.domain.Language;
-import org.combo.autocompletedtooptim.domain.*; // for static metamodels
-import org.combo.autocompletedtooptim.repository.LanguageRepository;
-import org.combo.autocompletedtooptim.service.dto.LanguageCriteria;
-import org.combo.autocompletedtooptim.service.dto.LanguageDTO;
-import org.combo.autocompletedtooptim.service.mapper.LanguageMapper;
+import java.util.List;
 
 /**
  * Service for executing complex queries for Language entities in the database.
@@ -36,10 +34,12 @@ public class LanguageQueryService extends QueryService<Language> {
     private LanguageRepository languageRepository;
 
     private LanguageMapper languageMapper;
+    private LanguageIdNameMapper languageIdNameMapper;
 
-    public LanguageQueryService(LanguageRepository languageRepository, LanguageMapper languageMapper) {
+    public LanguageQueryService(LanguageRepository languageRepository, LanguageMapper languageMapper, LanguageIdNameMapper languageIdNameMapper) {
         this.languageRepository = languageRepository;
         this.languageMapper = languageMapper;
+        this.languageIdNameMapper = languageIdNameMapper;
     }
 
     /**
@@ -66,6 +66,14 @@ public class LanguageQueryService extends QueryService<Language> {
         final Specification<Language> specification = createSpecification(criteria);
         return languageRepository.findAll(specification, page)
             .map(languageMapper::toDto);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<LanguageIdNameDTO> findIdNameByCriteria(LanguageCriteria criteria, Pageable page) {
+        log.debug("find Id and Name by criteria : {}, page: {}", criteria, page);
+        final Specification<Language> specification = createSpecification(criteria);
+        return languageRepository.findAll(specification, page)
+            .map(languageIdNameMapper::toDto);
     }
 
     /**

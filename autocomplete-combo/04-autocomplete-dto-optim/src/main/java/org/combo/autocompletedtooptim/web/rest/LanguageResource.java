@@ -2,6 +2,7 @@ package org.combo.autocompletedtooptim.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import org.combo.autocompletedtooptim.service.LanguageService;
+import org.combo.autocompletedtooptim.service.dto.LanguageIdNameDTO;
 import org.combo.autocompletedtooptim.web.rest.errors.BadRequestAlertException;
 import org.combo.autocompletedtooptim.web.rest.util.HeaderUtil;
 import org.combo.autocompletedtooptim.web.rest.util.PaginationUtil;
@@ -96,9 +97,9 @@ public class LanguageResource {
      */
     @GetMapping("/languages")
     @Timed
-    public ResponseEntity<List<LanguageDTO>> getAllLanguages(LanguageCriteria criteria, Pageable pageable) {
+    public ResponseEntity<List<LanguageIdNameDTO>> getAllLanguages(LanguageCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Languages by criteria: {}", criteria);
-        Page<LanguageDTO> page = languageQueryService.findByCriteria(criteria, pageable);
+        Page<LanguageIdNameDTO> page = languageQueryService.findIdNameByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/languages");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
