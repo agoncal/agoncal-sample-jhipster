@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "clientPackageManager": "npm",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "aud",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "org.combo.autocompletedtooptim",
+    "packageFolder": "org/combo/autocompletedtooptim",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "serviceDiscoveryType": false,
+    "skipClient": false,
+    "skipServer": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "autocompletedtooptim",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angularX",
+    "jhipsterVersion": "5.5.0",
+    "skipUserManagement": false,
+    "serverPort": "8080",
+    "useSass": true,
+    "jwtSecretKey": "MTg2NTM4MWU2ZjM2OGNmNzFjZGJhNDEyZWUxZDBjMDMzMGY2YjE1MmE3NzRlZTFjMjhiMjFkZjFlNjVhNGZmYWFkMmIzM2MxOWEyMWI0MTEwZjcxNTZiODRiMjZjMDIyZGI0YjlkOTU2ODNjNzg4MzMwMGYwMGU5MTNmZTk4YWQ="
+  },
+  "entities": [
+    "Contact",
+    "Language"
+  ]
+}
