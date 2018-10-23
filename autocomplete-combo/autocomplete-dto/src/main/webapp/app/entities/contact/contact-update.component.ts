@@ -4,10 +4,11 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JhiAlertService } from 'ng-jhipster';
 
-import { IContact } from 'app/shared/model/contact.model';
+import { Contact, IContact } from 'app/shared/model/contact.model';
 import { ContactService } from './contact.service';
-import { ILanguage } from 'app/shared/model/language.model';
+import { ILanguage, Language } from 'app/shared/model/language.model';
 import { LanguageService } from 'app/entities/language';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'aud-contact-update',
@@ -18,6 +19,7 @@ export class ContactUpdateComponent implements OnInit {
     isSaving: boolean;
 
     languages: ILanguage[];
+    language: ILanguage;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -30,13 +32,22 @@ export class ContactUpdateComponent implements OnInit {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ contact }) => {
             this.contact = contact;
+            this.languageService.find(this.contact.languageId).pipe(map((language: HttpResponse<Language>) => this.language = language.body));
         });
-        this.languageService.query().subscribe(
+    }
+
+    searchLanguages($event) {
+        this.languageService.query({'name.contains': $event.query}).subscribe(
             (res: HttpResponse<ILanguage[]>) => {
                 this.languages = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+    }
+
+    captureLanguageId($event) {
+        this.contact.languageId = $event.id;
+        this.contact.languageName = $event.name;
     }
 
     previousState() {

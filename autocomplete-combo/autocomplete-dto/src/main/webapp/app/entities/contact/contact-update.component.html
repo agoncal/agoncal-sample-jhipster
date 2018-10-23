@@ -38,11 +38,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="autocompletedtoApp.contact.language" for="field_language">Language</label>
-                    <select class="form-control" id="field_language" name="language" [(ngModel)]="contact.languageId"  required>
-                        <option *ngIf="!editForm.value.language" [ngValue]="null" selected></option>
-                        <option [ngValue]="languageOption.id" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.name}}</option>
-                    </select>
+                    <label class="form-control-label" jhiTranslate="autocompletedtoApp.contact.language"
+                           for="field_language">Language</label>
+                    <div class="form-group">
+                        <p-autoComplete id="field_language" name="language"
+                                        [(ngModel)]="contact.language" field="name"
+                                        [suggestions]="languages"
+                                        (completeMethod)="searchLanguages($event)"
+                                        (onSelect)="captureLanguageId($event)"
+                                        required>
+                        </p-autoComplete>
+                    </div>
                 </div>
                 <div [hidden]="!(editForm.controls.language?.dirty && editForm.controls.language?.invalid)">
                     <small class="form-text text-danger"
