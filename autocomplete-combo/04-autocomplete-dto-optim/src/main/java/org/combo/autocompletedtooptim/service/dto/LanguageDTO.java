@@ -1,7 +1,7 @@
 package org.combo.autocompletedtooptim.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import org.combo.autocompletedtooptim.web.rest.Views;
+import org.combo.autocompletedtooptim.web.rest.Format;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class LanguageDTO implements Serializable {
 
-    @JsonView(Views.Minimal.class)
+    @JsonView(Format.Minimal.class)
     private Long id;
 
     @NotNull
@@ -25,7 +25,7 @@ public class LanguageDTO implements Serializable {
     private String alpha2;
 
     @NotNull
-    @JsonView(Views.Minimal.class)
+    @JsonView(Format.Minimal.class)
     private String name;
 
     private String flag32;

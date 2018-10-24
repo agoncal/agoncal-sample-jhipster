@@ -96,7 +96,7 @@ public class LanguageResource {
      */
     @GetMapping("/languages")
     @Timed
-    @JsonView(Views.Minimal.class)
+    @JsonView(Format.Minimal.class)
     public ResponseEntity<List<LanguageDTO>> getAllLanguages(LanguageCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Languages by criteria: {}", criteria);
         Page<LanguageDTO> page = languageQueryService.findByCriteria(criteria, pageable);

@@ -1,6 +1,6 @@
 package org.combo.autocompletedtooptim.web.rest;
 
-public class Views {
+public class Format {
     public static class Minimal {
     }
 }
