@@ -6,8 +6,6 @@ import org.combo.autocompletedtooptim.domain.Language_;
 import org.combo.autocompletedtooptim.repository.LanguageRepository;
 import org.combo.autocompletedtooptim.service.dto.LanguageCriteria;
 import org.combo.autocompletedtooptim.service.dto.LanguageDTO;
-import org.combo.autocompletedtooptim.service.dto.LanguageIdNameDTO;
-import org.combo.autocompletedtooptim.service.mapper.LanguageIdNameMapper;
 import org.combo.autocompletedtooptim.service.mapper.LanguageMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,12 +32,10 @@ public class LanguageQueryService extends QueryService<Language> {
     private LanguageRepository languageRepository;
 
     private LanguageMapper languageMapper;
-    private LanguageIdNameMapper languageIdNameMapper;
 
-    public LanguageQueryService(LanguageRepository languageRepository, LanguageMapper languageMapper, LanguageIdNameMapper languageIdNameMapper) {
+    public LanguageQueryService(LanguageRepository languageRepository, LanguageMapper languageMapper) {
         this.languageRepository = languageRepository;
         this.languageMapper = languageMapper;
-        this.languageIdNameMapper = languageIdNameMapper;
     }
 
     /**
@@ -66,14 +62,6 @@ public class LanguageQueryService extends QueryService<Language> {
         final Specification<Language> specification = createSpecification(criteria);
         return languageRepository.findAll(specification, page)
             .map(languageMapper::toDto);
-    }
-
-    @Transactional(readOnly = true)
-    public Page<LanguageIdNameDTO> findIdNameByCriteria(LanguageCriteria criteria, Pageable page) {
-        log.debug("find Id and Name by criteria : {}, page: {}", criteria, page);
-        final Specification<Language> specification = createSpecification(criteria);
-        return languageRepository.findAll(specification, page)
-            .map(languageIdNameMapper::toDto);
     }
 
     /**

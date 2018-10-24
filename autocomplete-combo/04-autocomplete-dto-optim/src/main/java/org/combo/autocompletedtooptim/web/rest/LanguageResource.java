@@ -1,15 +1,15 @@
 package org.combo.autocompletedtooptim.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.fasterxml.jackson.annotation.JsonView;
+import io.github.jhipster.web.util.ResponseUtil;
+import org.combo.autocompletedtooptim.service.LanguageQueryService;
 import org.combo.autocompletedtooptim.service.LanguageService;
-import org.combo.autocompletedtooptim.service.dto.LanguageIdNameDTO;
+import org.combo.autocompletedtooptim.service.dto.LanguageCriteria;
+import org.combo.autocompletedtooptim.service.dto.LanguageDTO;
 import org.combo.autocompletedtooptim.web.rest.errors.BadRequestAlertException;
 import org.combo.autocompletedtooptim.web.rest.util.HeaderUtil;
 import org.combo.autocompletedtooptim.web.rest.util.PaginationUtil;
-import org.combo.autocompletedtooptim.service.dto.LanguageDTO;
-import org.combo.autocompletedtooptim.service.dto.LanguageCriteria;
-import org.combo.autocompletedtooptim.service.LanguageQueryService;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -97,9 +96,10 @@ public class LanguageResource {
      */
     @GetMapping("/languages")
     @Timed
-    public ResponseEntity<List<LanguageIdNameDTO>> getAllLanguages(LanguageCriteria criteria, Pageable pageable) {
+    @JsonView(Views.Minimal.class)
+    public ResponseEntity<List<LanguageDTO>> getAllLanguages(LanguageCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Languages by criteria: {}", criteria);
-        Page<LanguageIdNameDTO> page = languageQueryService.findIdNameByCriteria(criteria, pageable);
+        Page<LanguageDTO> page = languageQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/languages");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
