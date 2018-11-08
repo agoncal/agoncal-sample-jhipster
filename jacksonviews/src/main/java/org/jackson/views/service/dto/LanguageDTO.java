@@ -11,15 +11,17 @@ import java.util.Objects;
  */
 public class LanguageDTO implements Serializable {
 
-    @JsonView(View.Minimal.class)
+    @JsonView({View.Minimal.class, View.Code.class})
     private Long id;
 
     @NotNull
     @Size(max = 3)
+    @JsonView(View.Code.class)
     private String alpha3b;
 
     @NotNull
     @Size(max = 2)
+    @JsonView(View.Code.class)
     private String alpha2;
 
     @JsonView(View.Minimal.class)

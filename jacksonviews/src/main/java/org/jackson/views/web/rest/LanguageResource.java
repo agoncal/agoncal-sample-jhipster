@@ -103,10 +103,20 @@ public class LanguageResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-    @GetMapping("/languages?view=minimal")
+    @GetMapping(value = "/languages/minimalview")
     @JsonView(View.Minimal.class)
     @Timed
     public ResponseEntity<List<LanguageDTO>> getAllLanguagesMinimalView(LanguageCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get Languages with Minimal View by criteria: {}", criteria);
+        Page<LanguageDTO> page = languageQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/languages");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping(value = "/languages/codeview")
+    @JsonView(View.Code.class)
+    @Timed
+    public ResponseEntity<List<LanguageDTO>> getAllLanguagesCodeView(LanguageCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Languages with Minimal View by criteria: {}", criteria);
         Page<LanguageDTO> page = languageQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/languages");

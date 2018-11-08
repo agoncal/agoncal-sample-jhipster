@@ -34,7 +34,12 @@ export class LanguageService {
 
     queryMinimalView(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
-        return this.http.get<ILanguage[]>(this.resourceUrl + '?view=minimal', { params: options, observe: 'response' });
+        return this.http.get<ILanguage[]>(this.resourceUrl + '/minimalview', { params: options, observe: 'response' });
+    }
+
+    queryCodeView(req?: any): Observable<EntityArrayResponseType> {
+        const options = createRequestOption(req);
+        return this.http.get<ILanguage[]>(this.resourceUrl + '/codeview', { params: options, observe: 'response' });
     }
 
     delete(id: number): Observable<HttpResponse<any>> {
