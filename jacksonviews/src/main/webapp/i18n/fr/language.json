@@ -1,0 +1,26 @@
+{
+    "jacksonviewsApp": {
+        "language": {
+            "home": {
+                "title": "Languages",
+                "createLabel": "Créer un nouveau Language",
+                "createOrEditLabel": "Créer ou éditer un Language"
+            },
+            "created": "Un nouveau Language a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Language avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Language avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Language {{ id }} ?"
+            },
+            "detail": {
+                "title": "Language"
+            },
+            "alpha3b": "Alpha 3 B",
+            "alpha2": "Alpha 2",
+            "name": "Name",
+            "flag32": "Flag 32",
+            "flag128": "Flag 128",
+            "activated": "Activated"
+        }
+    }
+}

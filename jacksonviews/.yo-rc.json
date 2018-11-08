@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jac",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "org.jackson.views",
+    "packageFolder": "org/jackson/views",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "serviceDiscoveryType": false,
+    "skipClient": false,
+    "skipServer": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "jacksonviews",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angularX",
+    "clientPackageManager": "npm",
+    "jhipsterVersion": "5.6.1",
+    "skipUserManagement": false,
+    "serverPort": "8080",
+    "useSass": true,
+    "jwtSecretKey": "NGE4MTYxMDY2NGNiMWY0ZjFlZmFhMWM4ODYxMWQ0OGM2ZmVmOWYyYzMwMTkxNjJlZThlMjk5NmY4ZTYxNzRiNDZiZmY0N2M0ZjlkMDI4ODZmZjdiY2YwMWYxZWVmNWFhYTJlYWU3OTRiZjE1N2YzMzhmMTBjMDgxYWE1NmRiZTY="
+  },
+  "entities": [
+    "Contact",
+    "Language"
+  ]
+}

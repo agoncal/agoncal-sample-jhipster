@@ -1,0 +1,46 @@
+application {
+    config {
+        applicationType monolith
+        authenticationType jwt
+        baseName jacksonviews
+        buildTool maven
+        cacheProvider ehcache
+        clientFramework angularX
+        clientPackageManager npm
+        databaseType sql
+        devDatabaseType h2Memory
+        prodDatabaseType postgresql
+        jhiPrefix jac
+        languages [en, fr]
+        nativeLanguage en
+        packageName org.jackson.views
+    }
+
+    entities *
+}
+
+
+entity Contact (jac_contact) {
+    firstName String required,
+    lastName String required,
+    email String
+}
+
+
+entity Language (jac_language) {
+    alpha3b String required maxlength(3),
+    alpha2 String required maxlength(2)
+    name String required,
+    flag32	String,
+    flag128 String,
+    activated Boolean
+}
+
+relationship ManyToOne {
+    Contact{language(name) required} to Language
+}
+
+service * with serviceClass
+dto * with mapstruct
+paginate * with pagination
+filter *

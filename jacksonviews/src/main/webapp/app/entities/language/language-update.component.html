@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jac-language-heading" jhiTranslate="jacksonviewsApp.language.home.createOrEditLabel">Create or edit a Language</h2>
+            <div>
+                <jac-alert-error></jac-alert-error>
+                <div class="form-group" [hidden]="!language.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="language.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jacksonviewsApp.language.alpha3b" for="field_alpha3b">Alpha 3 B</label>
+                    <input type="text" class="form-control" name="alpha3b" id="field_alpha3b"
+                        [(ngModel)]="language.alpha3b" required maxlength="3"/>
+                    <div [hidden]="!(editForm.controls.alpha3b?.dirty && editForm.controls.alpha3b?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.alpha3b?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.alpha3b?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 3 }">
+                        This field cannot be longer than 3 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jacksonviewsApp.language.alpha2" for="field_alpha2">Alpha 2</label>
+                    <input type="text" class="form-control" name="alpha2" id="field_alpha2"
+                        [(ngModel)]="language.alpha2" required maxlength="2"/>
+                    <div [hidden]="!(editForm.controls.alpha2?.dirty && editForm.controls.alpha2?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.alpha2?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.alpha2?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2 }">
+                        This field cannot be longer than 2 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jacksonviewsApp.language.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="language.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jacksonviewsApp.language.flag32" for="field_flag32">Flag 32</label>
+                    <input type="text" class="form-control" name="flag32" id="field_flag32"
+                        [(ngModel)]="language.flag32" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jacksonviewsApp.language.flag128" for="field_flag128">Flag 128</label>
+                    <input type="text" class="form-control" name="flag128" id="field_flag128"
+                        [(ngModel)]="language.flag128" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jacksonviewsApp.language.activated" for="field_activated">Activated</label>
+                    <input type="checkbox" class="form-control" name="activated" id="field_activated"
+                        [(ngModel)]="language.activated" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
