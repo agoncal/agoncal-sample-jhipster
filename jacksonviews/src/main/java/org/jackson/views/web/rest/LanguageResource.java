@@ -108,9 +108,7 @@ public class LanguageResource {
     @Timed
     public ResponseEntity<List<LanguageDTO>> getAllLanguagesMinimalView(LanguageCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Languages with Minimal View by criteria: {}", criteria);
-        Page<LanguageDTO> page = languageQueryService.findByCriteria(criteria, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/languages");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
+        return getAllLanguages(criteria, pageable);
     }
 
     @GetMapping(value = "/languages/codeview")
