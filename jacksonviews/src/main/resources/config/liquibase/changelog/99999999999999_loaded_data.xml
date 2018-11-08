@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <!--
+        Load data.
+    -->
+    <changeSet id="99999999999999-load" author="agoncal" context="!test">
+        <loadData encoding="UTF-8" separator=";"
+                  file="config/liquibase/data/languages.csv"
+                  tableName="jac_language">
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

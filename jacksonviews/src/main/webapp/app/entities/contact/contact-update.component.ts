@@ -31,7 +31,7 @@ export class ContactUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ contact }) => {
             this.contact = contact;
         });
-        this.languageService.query().subscribe(
+        this.languageService.queryMinimalView().subscribe(
             (res: HttpResponse<ILanguage[]>) => {
                 this.languages = res.body;
             },

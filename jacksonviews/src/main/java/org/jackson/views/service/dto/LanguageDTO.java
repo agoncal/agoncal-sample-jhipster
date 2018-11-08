@@ -1,5 +1,7 @@
 package org.jackson.views.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,6 +11,7 @@ import java.util.Objects;
  */
 public class LanguageDTO implements Serializable {
 
+    @JsonView(View.Minimal.class)
     private Long id;
 
     @NotNull
@@ -19,6 +22,7 @@ public class LanguageDTO implements Serializable {
     @Size(max = 2)
     private String alpha2;
 
+    @JsonView(View.Minimal.class)
     @NotNull
     private String name;
 

@@ -1,27 +1,27 @@
 package org.jackson.views.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.fasterxml.jackson.annotation.JsonView;
+import io.github.jhipster.web.util.ResponseUtil;
+import org.jackson.views.service.LanguageQueryService;
 import org.jackson.views.service.LanguageService;
+import org.jackson.views.service.dto.LanguageCriteria;
+import org.jackson.views.service.dto.LanguageDTO;
+import org.jackson.views.service.dto.View;
 import org.jackson.views.web.rest.errors.BadRequestAlertException;
 import org.jackson.views.web.rest.util.HeaderUtil;
 import org.jackson.views.web.rest.util.PaginationUtil;
-import org.jackson.views.service.dto.LanguageDTO;
-import org.jackson.views.service.dto.LanguageCriteria;
-import org.jackson.views.service.LanguageQueryService;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -98,6 +98,16 @@ public class LanguageResource {
     @Timed
     public ResponseEntity<List<LanguageDTO>> getAllLanguages(LanguageCriteria criteria, Pageable pageable) {
         log.debug("REST request to get Languages by criteria: {}", criteria);
+        Page<LanguageDTO> page = languageQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/languages");
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/languages?view=minimal")
+    @JsonView(View.Minimal.class)
+    @Timed
+    public ResponseEntity<List<LanguageDTO>> getAllLanguagesMinimalView(LanguageCriteria criteria, Pageable pageable) {
+        log.debug("REST request to get Languages with Minimal View by criteria: {}", criteria);
         Page<LanguageDTO> page = languageQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/languages");
         return ResponseEntity.ok().headers(headers).body(page.getContent());
